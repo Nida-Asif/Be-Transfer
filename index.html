@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeTransfer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; }
+
+    /* Header */
+    header {
+      background: #fb812a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px 50px;
+    }
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0033cc;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #2529f5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      border-bottom: 2px solid #0033cc;
+    }
+    .contact-info {
+      background: #0033cc;
+      padding: 8px 15px;
+      border-radius: 20px;
+      color: yellow;
+      font-size: 14px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 5%;
+      background: #f8f8f8;
+      width: 100%;
+      min-height: 100vh;
+    }
+    .hero img {
+      max-width: 800px;
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .hero-content {
+      margin-left: 40px;
+      max-width: 450px;
+    }
+    .hero-content h1 {
+      color: #0033cc;
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+    .hero-content ul { margin: 20px 0; }
+    .hero-content ul li {
+      margin: 10px 0;
+      list-style: none;
+      font-size: 18px;
+    }
+    .hero-content ul li::before {
+      content: "✔️ ";
+      color: orange;
+    }
+    .btn {
+      display: inline-block;
+      background: #0033cc;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .btn:hover { background: #002080; }
+
+    .arrow {
+      font-size: 40px;
+      color: orange;
+      cursor: pointer;
+      margin: 0 20px;
+    }
+
+    /* Callback */
+    .callback {
+      padding: 60px 10%;
+      background: #fff;
+      text-align: center;
+    }
+    .callback p {
+      font-size: 23px;
+      color: #19181b;
+      margin-bottom: 25px;
+    }
+    .callback-form {
+      background: #0033cc;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-radius: 5px;
+    }
+    .callback-form label {
+      color: white;
+      font-weight: bold;
+    }
+    .callback-form input {
+      padding: 10px;
+      font-size: 14px;
+      width: 200px;
+      border: none;
+      border-radius: 3px;
+    }
+    .callback-form button {
+      background: orange;
+      border: none;
+      padding: 12px 20px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .callback-form button:hover { background: darkorange; }
+
+    /* Features */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 10%;
+      flex-wrap: wrap;
+    }
+    .feature-box {
+      flex: 1 1 300px;
+      border: 1px solid #ddd;
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+    }
+    .feature-box img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: contain;
+    }
+    .feature-box h3 {
+      color: #0033cc;
+      margin: 15px 0;
+    }
+    .feature-box p { color: #555; font-size: 14px; }
+
+    /* Company Section */
+    .company {
+      padding: 60px 10%;
+      background: #f9f9f9;
+    }
+    .company-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .company-box {
+      flex: 1;
+      min-width: 250px;
+    }
+    .company-box h2 {
+      color: #0033cc;
+      margin-bottom: 15px;
+    }
+    .company-box p { margin-bottom: 15px; color: #333; font-size: 14px; }
+    .company-box ul { list-style: none; padding: 0; }
+    .company-box ul li { margin: 8px 0; color: #333; }
+    .stats-box {
+      flex: 1;
+      min-width: 250px;
+      background: #eef5ff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .stats-box h2 { color: #0033cc; margin-bottom: 20px; }
+    .stats-box h3 { color: #0033cc; font-size: 28px; margin-bottom: 10px; }
+    .stats-box p { font-size: 14px; color: #555; }
+
+    /* Footer */
+    footer {
+      background: #f8f8f8;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    footer h2 {
+      color: #0033cc;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    footer p {
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      font-size: 14px;
+    }
+    footer nav {
+      margin-bottom: 20px;
+    }
+    footer nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #0033cc;
+      font-size: 14px;
+    }
+    .payments img {
+      height: 30px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Be>TRANSFER</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Faq</a>
+      <a href="#">How it works</a>
+      <a href="#">Contact</a>
+      <a href="#">Buy now</a>
+    </nav>
+    <div class="contact-info">📞 Call 223 455 566</div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="arrow">&#10094;</span>
+    <img src="img1.jpg" alt="Hero Image">
+    <div class="hero-content">
+      <h1>Transfer your money quickly and easily</h1>
+      <ul>
+        <li>Easy money transfers <strong>for low cost</strong></li>
+        <li>Available <strong>200+ countries</strong> on each continent</li>
+        <li><strong>24h</strong> across the world</li>
+      </ul>
+      <a href="#" class="btn">Get more info</a>
+    </div>
+    <span class="arrow">&#10095;</span>
+  </section>
+
+  <!-- Callback -->
+  <section class="callback">
+    <p>Send money instantly to your loved ones across the globe — safe, fast, and secure.<br>
+       Trusted money transfers to over 200 countries, anytime, anywhere.<br>
+       Get in touch with us today!</p>
+    <form class="callback-form">
+      <label>We will call you back:</label>
+      <input type="text" placeholder="Your name">
+      <input type="email" placeholder="Your e-mail">
+      <button type="submit">Send message</button>
+    </form>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature-box">
+      <img src="img2.png" alt="Card">
+      <h3>We will call you back</h3>
+      <p>Request a call back — we’re here to assist you.</p>
+    </div>
+    <div class="feature-box">
+      <img src="img3.png" alt="Mobile">
+      <h3>Anywhere and anytime</h3>
+      <p>Transfer money anytime, anywhere — fast, easy, and reliable.</p>
+    </div>
+    <div class="feature-box">
+      <img src="imgcar.png" alt="Car">
+      <h3>Register and win a car</h3>
+      <p>Join us and enter to win an exciting car giveaway.</p>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <section class="company">
+    <div class="company-container">
+
+      <div class="company-box">
+        <h2>Our company</h2>
+        <p>Maecenas volutpat eros justo, et arcu commodo eget. Curabitur porta blandit lectus, nec interdum felis.</p>
+        <p>Curabitur lobortis, eros a ornare porttitor; lorem odio porta massa, sed consequat ipsum nisl non est. Suspendisse tempus metus faucibus varius molestie nullam.</p>
+        <a href="#" style="color:orange; font-weight:bold; text-decoration:none;">Read more »</a>
+      </div>
+
+      <div class="company-box">
+        <h2>Do you know?</h2>
+        <ul>
+          <li>➤ Aenean sollicitudin orem qui</li>
+          <li>➤ Duis sed odio sit amet nibh</li>
+          <li>➤ Morbi accumsan ipsum velit</li>
+          <li>➤ Nam nec tellus</li>
+          <li>➤ Class aptent taciti sociosqu</li>
+          <li>➤ Sed non neque</li>
+        </ul>
+      </div>
+
+      <div class="stats-box">
+        <h2>Curabitur porta blandit lectus</h2>
+        <div style="display:flex; justify-content:space-around; flex-wrap:wrap;">
+          <div>
+            <h3>234 000</h3>
+            <p><strong>Pellen tesque habitant</strong> morbi tristique senectus.</p>
+          </div>
+          <div>
+            <h3>5 455 000</h3>
+            <p>Sed <strong>molestie</strong> dui eget ornare tincidunt.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h2>Be>TRANSFER</h2>
+    <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. 
+       Maecenas malesuada elit lectus felis, malesuada ultricies.</p>
+    <nav>
+      <a href="#">Consequat</a>
+      <a href="#">Donec</a>
+      <a href="#">Faucibus</a>
+      <a href="#">Odio porta</a>
+      <a href="#">Integer</a>
+    </nav>
+    <div class="payments">
+      <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="MasterCard">
+      <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
+      <img src="https://img.icons8.com/color/48/amex.png" alt="Amex">
+      <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal">
+    </div>
+  </footer>
+
+</body>
+</html>
