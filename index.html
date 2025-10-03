@@ -4,221 +4,251 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BeTransfer</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      margin-top: 140px; 
+      background: #f9fafb;
+      color: #111827;
+    }
 
     header {
-      background: #fb812a;
+      background: #1e3a8a;
       color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 50px 50px;
-    }
-    header .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #0033cc;
-    }
-    nav a {
-      margin: 0 10px;
-      color: #2529f5;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover {
-      border-bottom: 2px solid #0033cc;
-    }
-    .contact-info {
-      background: #0033cc;
-      padding: 8px 15px;
-      border-radius: 20px;
-      color: yellow;
-      font-size: 14px;
+      padding: 40px 50px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
+    /* Shrink effect on scroll */
+    header.shrink {
+      padding: 18px 50px;
+      background: white;
+      color: #111827;
+    }
+    header.shrink .logo { color: #1e3a8a; }
+    header.shrink nav a { color: #1e3a8a; }
+    header.shrink .contact-info {
+      background: #f97316;
+      color: white;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      color: #f97316;
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #facc15; }
+
+    .contact-info {
+      background: #f97316;
+      padding: 8px 18px;
+      border-radius: 20px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* HERO SECTION */
     .hero {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 60px 5%;
-      background: #f8f8f8;
       width: 100%;
       min-height: 100vh;
+      background: white;
+      overflow: hidden;
     }
     .hero img {
-      max-width: 800px;
+      max-width: 750px;
       width: 100%;
-      height: auto;
-      border-radius: 5px;
+      border-radius: 8px;
+      transition: opacity 0.5s ease-in-out;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     .hero-content {
       margin-left: 40px;
       max-width: 450px;
     }
     .hero-content h1 {
-      color: #0033cc;
+      color: #1e3a8a;
       margin-bottom: 20px;
-      font-size: 32px;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.3;
     }
     .hero-content ul { margin: 20px 0; }
     .hero-content ul li {
-      margin: 10px 0;
+      margin: 12px 0;
       list-style: none;
-      font-size: 18px;
+      font-size: 17px;
     }
     .hero-content ul li::before {
       content: "✔️ ";
-      color: orange;
+      color: #f97316;
     }
     .btn {
       display: inline-block;
-      background: #0033cc;
+      background: #1e3a8a;
       color: white;
-      padding: 12px 20px;
+      padding: 14px 24px;
       text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: 0.3s;
     }
-    .btn:hover { background: #002080; }
+    .btn:hover { background: #162c6a; }
 
     .arrow {
-      font-size: 40px;
-      color: orange;
+      font-size: 38px;
+      color: #f97316;
       cursor: pointer;
-      margin: 0 20px;
+      margin: 0 18px;
+      user-select: none;
+      transition: 0.3s;
     }
+    .arrow:hover { color: #1e3a8a; }
 
+    /* Callback */
     .callback {
-      padding: 60px 10%;
-      background: #fff;
+      padding: 70px 10%;
+      background: #1e3a8a;
       text-align: center;
+      color: white;
     }
     .callback p {
-      font-size: 23px;
-      color: #19181b;
+      font-size: 22px;
       margin-bottom: 25px;
+      line-height: 1.6;
     }
     .callback-form {
-      background: #0033cc;
+      background: white;
       padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 15px;
       flex-wrap: wrap;
-      border-radius: 5px;
-    }
-    .callback-form label {
-      color: white;
-      font-weight: bold;
+      border-radius: 8px;
     }
     .callback-form input {
-      padding: 10px;
+      padding: 12px;
       font-size: 14px;
-      width: 200px;
-      border: none;
-      border-radius: 3px;
+      width: 220px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
     }
     .callback-form button {
-      background: orange;
+      background: #f97316;
       border: none;
       padding: 12px 20px;
       color: white;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
-      border-radius: 3px;
+      border-radius: 6px;
+      transition: 0.3s;
     }
-    .callback-form button:hover { background: darkorange; }
+    .callback-form button:hover { background: #ea580c; }
 
+    /* Features */
     .features {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 40px 10%;
+      gap: 25px;
+      padding: 60px 10%;
       flex-wrap: wrap;
     }
     .feature-box {
       flex: 1 1 300px;
-      border: 1px solid #ddd;
       text-align: center;
-      padding: 20px;
-      background: #fff;
+      padding: 25px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: 0.3s;
     }
+    .feature-box:hover { transform: translateY(-5px); }
     .feature-box img {
       max-width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: contain;
     }
-    .feature-box h3 {
-      color: #0033cc;
-      margin: 15px 0;
+    .feature-box h3 { color: #1e3a8a; margin: 15px 0; font-weight: 600; }
+    .feature-box p { color: #444; font-size: 14px; line-height: 1.5; }
+    .feature-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: #f97316;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: 0.3s;
     }
-    .feature-box p { color: #555; font-size: 14px; }
+    .feature-btn:hover { background: #ea580c; }
 
-    .company {
-      padding: 60px 10%;
-      background: #f9f9f9;
-    }
-    .company-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-    .company-box {
-      flex: 1;
-      min-width: 250px;
-    }
-    .company-box h2 {
-      color: #0033cc;
-      margin-bottom: 15px;
-    }
-    .company-box p { margin-bottom: 15px; color: #333; font-size: 14px; }
+    /* Company */
+    .company { padding: 70px 10%; background: #f9fafb; }
+    .company-container { display: flex; flex-wrap: wrap; gap: 30px; }
+    .company-box { flex: 1; min-width: 250px; }
+    .company-box h2 { color: #1e3a8a; margin-bottom: 15px; font-weight: 600; }
+    .company-box p { margin-bottom: 15px; color: #333; font-size: 15px; line-height: 1.6; }
     .company-box ul { list-style: none; padding: 0; }
-    .company-box ul li { margin: 8px 0; color: #333; }
+    .company-box ul li { margin: 8px 0; color: #333; font-size: 14px; }
     .stats-box {
       flex: 1;
       min-width: 250px;
-      background: #eef5ff;
-      padding: 20px;
+      background: #eef2ff;
+      padding: 25px;
       text-align: center;
-      border-radius: 5px;
+      border-radius: 8px;
     }
-    .stats-box h2 { color: #0033cc; margin-bottom: 20px; }
-    .stats-box h3 { color: #0033cc; font-size: 28px; margin-bottom: 10px; }
-    .stats-box p { font-size: 14px; color: #555; }
+    .stats-box h2 { color: #1e3a8a; margin-bottom: 20px; }
+    .stats-box h3 { color: #1e3a8a; font-size: 28px; margin-bottom: 10px; }
+    .stats-box p { font-size: 14px; color: #444; }
 
     footer {
-      background: #f8f8f8;
+      background: #1e3a8a;
       padding: 40px 20px;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 50px;
+      color: white;
     }
-    footer h2 {
-      color: #0033cc;
-      font-size: 22px;
-      margin-bottom: 15px;
-    }
+    footer h2 { font-size: 22px; margin-bottom: 15px; }
     footer p {
-      color: #555;
       max-width: 700px;
       margin: 0 auto 20px;
       font-size: 14px;
+      line-height: 1.6;
     }
-    footer nav {
-      margin-bottom: 20px;
-    }
+    footer nav { margin-bottom: 20px; }
     footer nav a {
-      margin: 0 10px;
+      margin: 0 12px;
       text-decoration: none;
-      color: #0033cc;
+      color: #facc15;
       font-size: 14px;
     }
-    .payments img {
-      height: 30px;
-      margin: 5px;
-    }
+    .payments img { height: 30px; margin: 5px; }
   </style>
 </head>
 <body>
@@ -231,67 +261,70 @@
       <a href="#">FAQ</a>
       <a href="#">How it works</a>
       <a href="#">Contact</a>
-      <!-- Modified here -->
-      <a href="checkout.html">Buy now</a>
+      <a href="checkout.html">Send Money</a>
     </nav>
     <div class="contact-info">📞 Call 223 455 566</div>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <span class="arrow">&#10094;</span>
-    <img src="img1.jpg" alt="Hero Image">
+    <span class="arrow" id="prev">&#10094;</span>
+    <img id="hero-img" src="img1.jpg" alt="Hero Image">
     <div class="hero-content">
-      <h1>Transfer your money quickly and easily</h1>
-      <ul>
+      <h1 id="hero-title">Transfer your money quickly and easily</h1>
+      <ul id="hero-list">
         <li>Easy money transfers <strong>for low cost</strong></li>
         <li>Available in <strong>200+ countries</strong> worldwide</li>
         <li><strong>24/7</strong> global availability</li>
       </ul>
       <a href="#" class="btn">Get more info</a>
     </div>
-    <span class="arrow">&#10095;</span>
+    <span class="arrow" id="next">&#10095;</span>
   </section>
 
+  <!-- Callback -->
   <section class="callback">
     <p>Send money instantly to your loved ones across the globe — safe, fast, and secure.<br>
        Trusted transfers to over 200 countries, anytime, anywhere.<br>
        Get in touch with us today!</p>
     <form class="callback-form">
-      <label>We will call you back:</label>
       <input type="text" placeholder="Your name">
       <input type="email" placeholder="Your e-mail">
       <button type="submit">Send message</button>
     </form>
   </section>
 
+  <!-- Features -->
   <section class="features">
     <div class="feature-box">
       <img src="img2.png" alt="Card">
       <h3>We will call you back</h3>
       <p>Request a call back — we’re here to assist you.</p>
+      <a href="#" class="feature-btn">See More</a>
     </div>
     <div class="feature-box">
       <img src="img3.png" alt="Mobile">
       <h3>Anywhere and anytime</h3>
       <p>Transfer money anytime, anywhere — fast, easy, and reliable.</p>
+      <a href="#" class="feature-btn">See More</a>
     </div>
     <div class="feature-box">
       <img src="imgcar.png" alt="Car">
       <h3>Register and win a car</h3>
       <p>Join us and enter to win an exciting car giveaway.</p>
+      <a href="#" class="feature-btn">See More</a>
     </div>
   </section>
 
+  <!-- Company -->
   <section class="company">
     <div class="company-container">
-
       <div class="company-box">
         <h2>Our Company</h2>
         <p>We are dedicated to providing fast, safe, and affordable money transfers across the globe.</p>
         <p>With trusted services and a growing customer base, we ensure your money reaches loved ones securely and quickly.</p>
-        <a href="#" style="color:orange; font-weight:bold; text-decoration:none;">Read more »</a>
+        <a href="#" style="color:#f97316; font-weight:bold; text-decoration:none;">Read more »</a>
       </div>
-
       <div class="company-box">
         <h2>Did you know?</h2>
         <ul>
@@ -303,7 +336,6 @@
           <li>➤ Affordable transfer fees</li>
         </ul>
       </div>
-
       <div class="stats-box">
         <h2>Our Achievements</h2>
         <div style="display:flex; justify-content:space-around; flex-wrap:wrap;">
@@ -317,10 +349,10 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <h2>Be>TRANSFER</h2>
     <p>Making global money transfers simple, secure, and affordable. Join thousands of satisfied customers worldwide.</p>
@@ -339,5 +371,66 @@
     </div>
   </footer>
 
+  <!-- Slider Script -->
+  <script>
+    const slides = [
+      {
+        img: "img1.jpg",
+        title: "Transfer your money quickly and easily",
+        list: [
+          "Easy money transfers <strong>for low cost</strong>",
+          "Available in <strong>200+ countries</strong> worldwide",
+          "<strong>24/7</strong> global availability"
+        ]
+      },
+      {
+        img: "imghero2.png",
+        title: "Safe and Secure Transfers",
+        list: [
+          "Bank-level <strong>encryption</strong>",
+          "Trusted by <strong>millions worldwide</strong>",
+          "Always <strong>protected and reliable</strong>"
+        ]
+      }
+    ];
+
+    let current = 0;
+    const imgEl = document.getElementById("hero-img");
+    const titleEl = document.getElementById("hero-title");
+    const listEl = document.getElementById("hero-list");
+
+    function showSlide(index) {
+      const slide = slides[index];
+      imgEl.src = slide.img;
+      titleEl.innerHTML = slide.title;
+      listEl.innerHTML = slide.list.map(item => `<li>${item}</li>`).join("");
+    }
+
+    document.getElementById("next").addEventListener("click", () => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    });
+
+    document.getElementById("prev").addEventListener("click", () => {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    });
+
+    // Auto-change every 3 sec
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 3000);
+
+    // Header shrink on scroll
+    window.addEventListener("scroll", function() {
+      const header = document.querySelector("header");
+      if (window.scrollY > 50) {
+        header.classList.add("shrink");
+      } else {
+        header.classList.remove("shrink");
+      }
+    });
+  </script>
 </body>
 </html>
