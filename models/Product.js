@@ -3,9 +3,10 @@
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true },
-  description: String,
-  imageUrl: String,
+  category: { type: String, required: true },
+  image: { type: String },
+  description: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.models.Product || mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Product', productSchema);
