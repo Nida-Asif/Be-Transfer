@@ -35,7 +35,7 @@
 // app.get('/transfers', (req, res) => res.render('transfers', { title: 'Transfers' }));
 
 // const PORT = process.env.PORT || 3000;
-// app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT));
+// app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT + '/products'));
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
@@ -74,7 +74,7 @@ app.get('/success', (req, res) => res.render('success', { title: 'Success' }));
 app.get('/transfers', (req, res) => res.render('transfers', { title: 'Transfers' }));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT));
+app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT + '/products'));
 
 
 app.get('/ping', (req, res) => res.send('pong'));
