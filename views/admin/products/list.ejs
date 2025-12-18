@@ -1,0 +1,47 @@
+﻿<div class="container">
+  <div class="admin-topbar">
+    <h1>Products</h1>
+    <div class="actions">
+      <a class="btn-secondary" href="/admin/products/add">+ Add Product</a>
+    </div>
+  </div>
+
+  <div class="card-row">
+    <div class="card">
+      <div class="stat"><%= productCount || 0 %></div>
+      <div class="footer-note">Total products</div>
+    </div>
+    <div class="card">
+      <div class="stat"></div>
+      <div class="footer-note">Other stat</div>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th style="width:160px">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(function(p){ %>
+        <tr>
+          <td><%= p.name %></td>
+          <td> <%= p.price %></td>
+          <td><%= (p.description || '').slice(0,80) %></td>
+          <td>
+            <a class="btn" href="/admin/products/<%= p._id %>/edit">Edit</a>
+            <form action="/admin/products/<%= p._id %>/delete" method="post" style="display:inline">
+              <button data-confirm-delete class="btn-danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<script src="/js/admin.js"></script>
+

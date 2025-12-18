@@ -1,0 +1,20 @@
+﻿<div class="container">
+  <h1><%= product._id ? "Edit" : "Add" %> Product</h1>
+  <form class="card" method="post" action="<%= product._id ? ('/admin/products/' + product._id + '/edit') : '/admin/products/add' %>">
+    <div class="form-row">
+      <label>Name</label>
+      <input type="text" name="name" value="<%= product.name || '' %>" required>
+    </div>
+    <div class="form-row">
+      <label>Price</label>
+      <input type="text" name="price" value="<%= product.price || '' %>" required>
+    </div>
+    <div class="form-row">
+      <label>Description</label>
+      <textarea name="description"><%= product.description || '' %></textarea>
+    </div>
+    <div class="form-row">
+      <button class="btn" type="submit">Save</button>
+    </div>
+  </form>
+</div>

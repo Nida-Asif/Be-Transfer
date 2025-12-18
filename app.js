@@ -1,4 +1,4 @@
-
+﻿
 // const express = require('express');
 // const path = require('path');
 // const expressLayouts = require('express-ejs-layouts');
@@ -7,7 +7,7 @@
 
 // const app = express();
 
-// // 🔹 Test if dotenv loaded correctly
+// // ðŸ”¹ Test if dotenv loaded correctly
 // console.log("Mongo URI:", process.env.MONGO_URI); // should print your URI
 
 // // Middleware
@@ -19,10 +19,10 @@
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.urlencoded({ extended: true }));
 
-// // 🔹 MongoDB connection
+// // ðŸ”¹ MongoDB connection
 // mongoose.connect(process.env.MONGO_URI)
-//   .then(() => console.log('MongoDB connected successfully ✅'))
-//   .catch(err => console.error('MongoDB connection error ❌:', err));
+//   .then(() => console.log('MongoDB connected successfully âœ…'))
+//   .catch(err => console.error('MongoDB connection error âŒ:', err));
 //   app.use(express.static('public'));
 
 
@@ -35,7 +35,7 @@
 // app.get('/transfers', (req, res) => res.render('transfers', { title: 'Transfers' }));
 
 // const PORT = process.env.PORT || 3000;
-// app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT + '/products'));
+// app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT + '/admin'));
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
@@ -44,9 +44,10 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ ADD THIS
+// âœ… ADD THIS
 
 const productsRoutes = require('./routes/products');
+const adminRoutes = require('./routes/admin');
 
 // Middleware
 app.set('views', path.join(__dirname, 'views'));
@@ -59,12 +60,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected successfully ✅'))
-  .catch(err => console.error('MongoDB connection error ❌:', err));
+  .then(() => console.log('MongoDB connected successfully …'))
+  .catch(err => console.error('MongoDB connection error âŒ:', err));
 
-// ✅ ADD THIS (BEFORE app.get routes)
+// âœ… ADD THIS (BEFORE app.get routes)
 
 app.use('/products', productsRoutes);
+app.use('/admin', adminRoutes);
 
 // Existing page routes (KEEP AS IS)
 app.get('/', (req, res) => res.render('index', { title: 'Home' }));
@@ -74,7 +76,7 @@ app.get('/success', (req, res) => res.render('success', { title: 'Success' }));
 app.get('/transfers', (req, res) => res.render('transfers', { title: 'Transfers' }));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT + '/products'));
+app.listen(PORT, '0.0.0.0', () => console.log('Server started on http://localhost:' + PORT + '/admin'));
 
 
 app.get('/ping', (req, res) => res.send('pong'));
